@@ -1,3 +1,5 @@
 <template>
-  <Todo />
+  <NuxtLayout>
+    <NuxtPage />
+  </NuxtLayout>
 </template>

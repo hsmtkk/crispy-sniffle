@@ -1,8 +1,9 @@
 <template>
     <v-container>
+        <v-btn v-on:click="addTodo">Add</v-btn>
         <p>Todo List</p>
         <v-list>
-            <v-list-item v-for="(todo, index) in props.todos" v-bind:key="index">
+            <v-list-item v-for="(todo, index) in todos" v-bind:key="index">
                 <v-row>
                     <v-col cols="6">
                         <v-list-item-title>{{ todo }}</v-list-item-title>
@@ -17,19 +18,17 @@
 </template>
 
 <script setup lang="ts">
-interface Props {
-    todos: string[]
+const todos = useCookie("todos", {
+    default: () => {
+        return ["Alpha", "Bravo", "Charlie"]
+    }
+})
+
+const addTodo = () => {
+    navigateTo("todo-form")
 }
-
-const props = defineProps<Props>()
-
-type Emits = {
-    deleteTodo: [index: number]
-}
-
-const emits = defineEmits<Emits>()
 
 const deleteTodo = (index: number) => {
-    emits("deleteTodo", index)
+    todos.value.splice(index, 1)
 }
 </script>

@@ -11,7 +11,13 @@
 </template>
 
 <script setup lang="ts">
-const todos = ref(["Alpha", "Bravo", "Charlie"])
+//const todos = ref(["Alpha", "Bravo", "Charlie"])
+
+const todos = useCookie("todos", {
+    default: () => {
+        return ["Alpha", "Bravo", "Charlie"]
+    },
+})
 
 const addTodo = (content: string): void => {
     todos.value.push(content)
