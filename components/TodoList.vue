@@ -9,9 +9,12 @@
                         <v-list-item-title>{{ todo }}</v-list-item-title>
                     </v-col>
                     <v-col cols="6">
-                        <v-btn v-on:click="deleteTodo(index)">Del</v-btn>
+                        <v-list-item-action>
+                            <v-icon icon="mdi-delete" v-on:click="deleteTodo(index)" />
+                        </v-list-item-action>
                     </v-col>
                 </v-row>
+                <v-divider />
             </v-list-item>
         </v-list>
     </v-container>
